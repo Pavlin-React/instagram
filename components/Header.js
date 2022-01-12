@@ -11,11 +11,17 @@ import { useFonts } from "expo-font";
 import { AguafinaScript_400Regular } from "@expo-google-fonts/aguafina-script";
 import { StatusBar } from "expo-status-bar";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
+import AppLoading from "expo-app-loading";
 
 const Header = () => {
-  let [fontsLoaded] = useFonts({
+  let [fontsLoaded, error] = useFonts({
     AguafinaScript_400Regular,
   });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <SafeAreaView>
       <View
@@ -44,6 +50,7 @@ const Header = () => {
             flexDirection: "row",
             width: 120,
             justifyContent: "space-between",
+            marginRight: 7
           }}
         >
           <TouchableOpacity>
@@ -56,6 +63,19 @@ const Header = () => {
             <FontAwesome5 name="facebook-messenger" size={24} color="white" />
           </TouchableOpacity>
         </View>
+      </View>
+      <View
+        style={{
+          position: "absolute",
+          right: 0,
+          top: -10,
+          backgroundColor: "red",
+          paddingHorizontal: 5,
+          borderRadius: 10,
+          zIndex: 100
+        }}
+      >
+        <Text style={{ color: "white" }}>11</Text>
       </View>
     </SafeAreaView>
   );
