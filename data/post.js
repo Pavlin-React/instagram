@@ -3,7 +3,7 @@ export let POSTS = [
   {
     imageUrl: 'https://i.ibb.co/182bP1y/4k.png',
     user: USERS[0].user,
-    likes: 7870,
+    likes: 2356,
     caption: 'Train rains to Hogwarts.',
     profile_picture: USERS[0].image,
     comments: [
