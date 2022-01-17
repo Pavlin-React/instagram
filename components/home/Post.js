@@ -38,6 +38,7 @@ const Post = ({ post }) => {
         <Likes post={post} />
         <Caption post={post} />
         <CommentSection post={post} />
+        <Comments post={post} />
       </View>
     </View>
   );
@@ -128,6 +129,19 @@ let CommentSection = ({ post }) => {
     </View>
   );
 };
+
+let Comments = ({ post }) => (
+  <>
+    {post.comments.map((comment, index) => (
+      <View key={index} style={{marginTop: 5, flexDirection: 'row'}} >
+        <Text style={{color: 'white'}} >
+          <Text style={{fontWeight: '600'}} >{comment.user}</Text>
+          <Text> {comment.comment}</Text>
+        </Text>
+      </View>
+    ))}
+  </>
+);
 
 const styles = StyleSheet.create({
   story: {
