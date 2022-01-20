@@ -12,6 +12,9 @@ import { AguafinaScript_400Regular } from "@expo-google-fonts/aguafina-script";
 import { StatusBar } from "expo-status-bar";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
 import AppLoading from "expo-app-loading";
+import { useNavigation } from "@react-navigation/native";
+
+
 
 const Header = () => {
   let [fontsLoaded, error] = useFonts({
@@ -21,6 +24,7 @@ const Header = () => {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+  let navigation = useNavigation()
 
   return (
     <SafeAreaView>
@@ -53,7 +57,7 @@ const Header = () => {
             marginRight: 7
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('NewPostScreen')} >
             <Feather name="plus-square" size={24} color="white" />
           </TouchableOpacity>
           <TouchableOpacity>

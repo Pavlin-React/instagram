@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import FormikPostUploader from "./FormikPostUploader";
+import { useNavigation } from "@react-navigation/native";
 
 const addNewPost = () => (
   <View>
@@ -10,10 +11,12 @@ const addNewPost = () => (
   </View>
 );
 
+
 let Header = () => {
+  let navigation = useNavigation()
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.goBack()} >
         <MaterialIcons name="arrow-back-ios" size={24} color="white" />
       </TouchableOpacity>
       <Text style={styles.headerText}>NEW POST</Text>
