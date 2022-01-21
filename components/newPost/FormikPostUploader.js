@@ -3,8 +3,8 @@ import { View, Text, Image, TextInput, Button } from "react-native";
 import * as Yup from "yup";
 import { Divider } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import validUrl from 'valid-url'
-import { Formik } from 'formik';
+import validUrl from "valid-url";
+import { Formik } from "formik";
 
 let PLACEHOLDER_IMG =
   "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
@@ -20,9 +20,9 @@ const FormikPostUploader = () => {
   return (
     <Formik
       initialValues={{ caption: "", imageUrl: "" }}
-      onSubmit={values => {
-        console.log(values)
-        navigation.goBack()
+      onSubmit={(values) => {
+        console.log(values);
+        navigation.goBack();
       }}
       validationSchema={uploadPostSchemas}
       validateOnMount={true}
@@ -44,7 +44,11 @@ const FormikPostUploader = () => {
             }}
           >
             <Image
-              source={{ uri: validUrl.isUri(thumbnailUrl) ? thumbnailUrl : PLACEHOLDER_IMG }}
+              source={{
+                uri: validUrl.isUri(thumbnailUrl)
+                  ? thumbnailUrl
+                  : PLACEHOLDER_IMG,
+              }}
               style={{ width: 100, height: 100 }}
             />
             <View style={{ flex: 1, marginLeft: 15 }}>
@@ -74,11 +78,7 @@ const FormikPostUploader = () => {
               {errors.imageUrl}
             </Text>
           )}
-          <Button
-            title="Share"
-            onPress={handleSubmit}
-            disabled={!isValid}
-          />
+          <Button title="Share" onPress={handleSubmit} disabled={!isValid} />
         </>
       )}
     </Formik>
